@@ -36,20 +36,34 @@ void free_list (node * p)
 /* print list to console */
 void print_list (node * p)
 {
-    // Add your code for exercise 1
-    // There is NO testcode for this
+  printf("%d", p->value);
+  if(p != NULL){
+    printf(",");
+  }
+  print_list(p->next);
 }
 
 int sum_squares (node * p)
 {
     // Add your code for excercise 2
     // You can find the tests in tests.cpp
-    return -1;
+    if(p != NULL){
+      return (square(p->value)) + sum_squares(p->next);
+    }
+    else
+      return 0;
 }
 
 node *map (node * p, int (*f) (int))
 {
     // Add your code for excercise 3
+    // Pre-condition value of p != NULL and that the linked list is not empty
+    
+    if(p != NULL){
+      f = square(p->value); 
+      p->value = f;
+    }
+    map(p->next, f);
     return NULL;
 }
 
